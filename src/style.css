@@ -1,0 +1,166 @@
+.control-label:after 
+{
+  content:"*";
+  color:red;
+}
+
+#fav
+{
+	
+	overflow-x: auto ;
+  max-width: 100%;
+  white-space: nowrap ;
+ -webkit-overflow-scrolling: touch;
+}
+
+rect.highcharts-background
+{
+	max-width:100% !important;
+	width:100% !important;
+	height:100% !important;
+} 
+
+#fav tbody {
+  // optional - enable iOS momentum scrolling
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  overflow-x: scroll;
+}
+/*
+#fav{
+  display: inline;
+  overflow: hidden;
+  background: none;
+} 
+/*
+#fav thead {
+  display: flex;
+  flex-shrink: 0;
+  min-width: min-content;
+}
+
+
+#fav tbody {
+  display: flex;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#fav tr {
+  display: flex;
+  flex-direction: column;
+  min-width: min-content;
+  flex-shrink: 0;
+} 
+
+#fav td,
+#fav th {
+  display: block;
+}*/
+
+.buttonBody
+{
+	padding:0px !important;
+}
+
+hr.style-six
+{
+    border: 0;
+    height: 0;
+	width: 98% ; 
+    border-top: 1px solid white;
+    border-bottom: 1px solid black;
+}
+
+hr.style-hr
+{
+    border: 0;
+    height: 0;
+	width: 100% ; 
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+
+#stockD tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* 
+{
+	width:100% !important;
+}
+ */
+table.borderless   th
+{
+  border: none !important;
+}
+
+.ss
+{
+	width : 77.5% !important;
+	margin-right:0px;
+}
+
+body 
+{ 
+background: url("background.png") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	
+	
+} /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+.containerBody
+{
+	background-color: white !important; 
+	width:97%;
+	margin:0px;
+	padding:0px;  
+	margin-top:10px;
+	border-radius: 3px;
+}
+
+
+
+ 
+.highcharts-container
+{
+	max-width:100% !important;
+	width:100% !important; 
+	height:100% !important;
+}
+
+.redFont
+	{
+			color:#EB4145;
+	}
+	
+.greenFont
+	{
+			color:#52C654;
+	}
+	
+
+
+
+.panelBody
+{
+	margin-top:10px;
+}
+
+.panel-head
+{
+		padding-right:0px;
+}
+
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 79%;
+    padding-top: 8px;
+}

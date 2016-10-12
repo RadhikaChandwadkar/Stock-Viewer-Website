@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<link href="style.css" rel="stylesheet">
+	<script src="script.js"></script>	
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link href="http://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+	<script src="http://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+	<script src="http://momentjs.com/downloads/moment.min.js"></script>
+		<script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script>
+	</head>
+	<body>
+	
+	<div style="width:100%;">
+		<div class=" containerBody panelBody container-fluid">
+			<div class="row-fluid">
+				<div class="span12">
+					<h3 class="text-center"><b>Stock Market Search</b></h3>
+					<form class="form-inline" role="form" id="stockForm">
+						<div class="row"> <!-- style="margin-bottom:10px"> -->
+							<div class="form-group required col-md-3">
+								<label class="control-label" style="width:100%" for="companyName">Enter the stock name or symbol:</label>
+							</div>
+							<div class="form-group  col-md-6">
+								<input type="text"  class="form-control" placeholder="Apple Inc or AAPL" style="width:100%" id="companyName" required>
+							</div>	
+							<div class="form-group col-md-3">
+							<!-- style="background:#3173AD !important" -->
+								
+								<button type="submit" class="btn btn-primary "  id="getQuote"   aria-label="Left Align">	
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>Get Quote
+								</button>
+								<button type="button" id="clear" class="btn btn-default" aria-label="Left Align" formnovalidate=formnovalidate onclick='clearValues()'>
+									<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+									Clear
+								</button>
+							</div>	
+						</div>
+						
+						<div class="row" style="margin-bottom:10px">
+							
+								<div class="col-lg-3">
+								</div>
+									<div id="messages" class="col-lg-6">
+									
+									</div>
+							
+							
+							<div class="form-group col-lg-3">
+									Powered By:<a href="http://dev.markitondemand.com/MODApis/"><img src="mod-logo.png"  width="40%" height="20px"></a>
+							</div>
+
+						</div>						
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<hr class="style-six">
+		
+	<div id="myCarousel" class="carousel slide container-fluid" data-interval="false">
+		 <div class="carousel-inner container-fluid containerBody">
+			<div class="item active panel panel-default panelBody">
+				<div class="panel-heading panel-head">
+					<div class=" panel-title row">
+					<div class=" col-md-9 pull-left" style="padding-right:0px">
+						Favorites List
+					</div>
+					<div class="col-md-3 pull-right"style="padding-left:0px">
+					<label for="autoRefresh" class="visible-lg-inline">Automatic Refresh:</label>
+					<span data-toggle="tooltip" title="AutoRefresh">
+					<input id="autoRefresh" type="checkbox" data-toggle="toggle"></span>
+					<button type="button" class="btn btn-default" title="Refresh" id="refresh" aria-label="Left Align">
+						<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+					</button>					
+					<a href="#myCarousel" role="button" id="aC"   data-slide=""> 
+						<button class="btn btn-default pull-right" disabled title="Go to Stock Information" id='leftInd' aria-label="Left Align" >
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						</button>
+					</a>
+					</div>
+					</div>
+				</div>
+				<div id="fav12" class="panel-body  table-responsive">
+					<table id="fav" class="table borderless">
+						<thead  style="background-color:#f9f9f9; border-top: 2px solid #ededed;"> 
+						<tr>	
+								<th>Symbol</th>
+								<th>Company Name</th>
+								<th>Stock Price</th>
+								<th>Change (Change Percent)</th>
+								<th>Market Cap</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody id="stockD">
+						<!-- 	<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						 --></tbody>
+					</table>
+				</div>
+			</div>
+
+			
+			<div class="item panel panel-default panelBody">
+				<div class="panel-heading">
+						<a href="#myCarousel" role="button" data-slide="prev" > 
+						<button class="btn btn-default pull-left" aria-label="Left Align">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						</button></a>
+
+						<h3 class="panel-title text-center">
+							Stock Details
+						</h3>
+				</div>
+				<div id="tt" class="panel-body">
+				
+					<ul class="tabs nav nav-pills tab-responsive" data-interval="false">
+						<li class="active">
+							<a id="getStockData" data-toggle="pill" href="#currentStock">
+								<span class="glyphicon glyphicon-time"></span> 
+								<span class="visible-lg-inline">Current</span> Stock
+							</a>
+						</li>
+						<li>
+							<a id="getHistoricalChart" data-toggle="pill" href="#highchartContainer">
+								<span class="glyphicon glyphicon-stats"></span> 
+								<span class="visible-lg-inline">Historical</span> Charts
+							</a>
+						</li>
+						<li><a id="getBingSearch" data-toggle="pill" href="#newsFeeds">
+								<span class="glyphicon glyphicon-link"></span> 
+								News<span class="visible-lg-inline"> Feeds</span>
+							</a>
+						</li>
+					</ul>
+					
+					<div class="tab-content ">
+					
+						<hr class="style-hr">
+						<div id="currentStock" class="tab-pane fade in active containerBody">
+							<div class="row">
+								<div class="col-sm-12">
+								<b class=" pull-left">Stock Details</b>
+								<div  class="pull-right ">
+								<button class="btn buttonBody" id="facebookShare">
+									<img src="logo.png" width="40px">
+								</button>
+								<button type="button" class="btn btn-default" style="height:40px;width:50px" id="favourites">
+									<!-- span class="glyphicon glyphicon-star-empty">
+									<span class="inside glyphicon glyphicon-star-empty" id='colorChange' style="position:absolutefont-size:1.5em;"></span>
+									</span> -->
+									
+									<span class="glyphicon glyphicon-star pull-left" id='colorChange' style="color:white;font-size:1.5em;"></span>
+								</button>
+								</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6 rowspan pull-left">
+									<table class="table table-striped ">
+										
+										<tbody id="tableData">
+										</tbody>
+									</table>
+								</div>
+								<div class="col-lg-6">
+									<div class="row" style="">
+										<div class="col-lg-6 pull-right">
+										<div class="pull-right">
+								<!-- 			<button class="btn buttonBody" id="facebookShare">
+												<img src="logo.png" width="40px">
+											</button>
+											<button type="button" class="btn btn-default" style="height:40px;width:50px" id="favourites">
+												<span class="glyphicon glyphicon-star-empty" style="font-size: 1.5em;"></span>
+											</button>
+								 -->		</div>
+										</div>
+									</div>
+								
+									<div class="row-fluid">
+										<div class="col-lg-12" id="yahooChart">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+							
+						
+						<div id="highchartContainer" class="tab-pane fade">
+							
+							<div id="chartContainer" class="container" style="max-width:100%;">
+							</div>
+						</div>
+					
+						<div id="newsFeeds" class="tab-pane fade">
+									
+							<div class="row">
+									
+								<div id="newsFeedsDialog"  class="col-lg-12">
+								
+									
+								
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	</div>
+	</body>
+</html>
